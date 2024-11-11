@@ -34,4 +34,5 @@ function checkLoginCredentials($email, $password, $users) {
 function checkUserSessionIsActive() {
     return isset($_SESSION['user_email']);
 }
+
 ?>
