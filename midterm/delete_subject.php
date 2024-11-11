@@ -37,8 +37,7 @@ if (isset($_GET['code'])) {
                 }
             }
         }
-
-        // Display the confirmation page with breadcrumbs
+        
         echo '
         <!DOCTYPE html>
         <html lang="en">
