@@ -54,29 +54,42 @@ function renderErrorsToView($error) {
     return "<div class='alert alert-danger'>$error</div>";
 }
 
-function validateStudentData($student_data) {
+// Validate student data (only checks student ID now)
+// Validate student data
+function validateStudentData($data) {
     $errors = [];
-    if (empty($student_data['name'])) {
-        $errors[] = "Student name is required.";
-    }
-    if (empty($student_data['email'])) {
-        $errors[] = "Student email is required.";
-    }
-    // Additional validation rules as needed
-    return $errors;
-}
-function checkDuplicateStudentData($student_data) {
-    if (!isset($_SESSION['students'])) {
-        $_SESSION['students'] = [];
+
+    // Validate student ID
+    if (empty($data['id'])) {
+        $errors[] = 'Student ID is required.';
     }
 
-    foreach ($_SESSION['students'] as $student) {
-        if ($student['email'] === $student_data['email']) {
-            return "A student with this email already exists.";
+    // Validate first name
+    if (empty($data['first_name'])) {
+        $errors[] = 'First Name is required.';
+    }
+
+    // Validate last name
+    if (empty($data['last_name'])) {
+        $errors[] = 'Last Name is required.';
+    }
+
+    return $errors;
+}
+
+// Check for duplicate student ID
+function checkDuplicateStudentId($id) {
+    if (isset($_SESSION['students'])) {
+        foreach ($_SESSION['students'] as $student) {
+            if ($student['id'] === $id) {
+                return 'A student with this ID already exists.';
+            }
         }
     }
-    return null;
+    return false;
 }
+
+
 function getSelectedStudentIndex($student_id) {
     if (!isset($_SESSION['students'])) {
         return null;
