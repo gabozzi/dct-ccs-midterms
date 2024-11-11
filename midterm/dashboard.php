@@ -33,7 +33,7 @@ $user_email = $_SESSION['user_email'];
                     <div class="card-body">
                         <h5 class="card-title">Add a Subject</h5>
                         <p class="card-text">This section allows you to add a new subject in the system. Click the button below to proceed with the adding process.</p>
-                        <a href="add_subject.php" class="btn btn-primary">Add Subject</a>
+                        <a href="subject.php" class="btn btn-primary">Add Subject</a>
                     </div>
                 </div>
             </div>
